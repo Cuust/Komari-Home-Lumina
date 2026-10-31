@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komari Monitor</title>
+    <meta name="description" content="A simple server monitor tool.">
+    <!-- 主题 favicon 放在 /komarihome/ 避免覆盖 Komari 自带的 /favicon.ico；由 App.vue 按开关管理 -->
+    <link id="theme-favicon" rel="icon" href="/komarihome/favicon.ico">
+    <script type="module" crossorigin src="/assets/index-DVhWVUeY-3isp-v36.js?online-follows-led"></script>
+    <link rel="preload" href="/assets/bootstrap-icons-mSm7cUeB.woff2?e34853135f9e39acf64315236852cd5a" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" crossorigin href="/assets/index-D_ZS1HD8-p6.css">
+  <style id="lm-brand-title-only">.nav-brand .brand-sep,.nav-brand .brand-sub{display:none!important}</style>
+  <style id="komari-landscape-two-column-v1">
+    @media (orientation: landscape) and (min-width: 600px) and (max-width: 1199px), (orientation: portrait) and (min-width: 700px) and (max-width: 1199px) {
+      .k-grid[data-v-53edfb5a] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    }
+  </style>
+  <style id="komari-3isp-v14">
+    .k-health.k-h3{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}
+    .k-health-empty{display:flex;align-items:center;justify-content:center;min-height:44px;font-size:12px;color:var(--k-text-3)}
+    .k-h3-head{display:flex;align-items:center;gap:4px;margin-bottom:6px;font-size:12px;font-weight:600;color:var(--k-text-2)}
+    .k-h3-head i{font-size:12px;color:var(--k-text-2)}
+    .k-h3-row{display:flex;align-items:center;gap:4px;height:22px}
+    .k-h3-name{flex:none;width:24px;font-size:11px;line-height:1;color:var(--k-text-3);white-space:nowrap}
+    .k-h3-chart{position:relative;flex:1 1 0;min-width:0;height:10px}
+    .k-h3-svg{display:block;width:100%;height:10px;overflow:visible}
+    .k-h3-svg path{stroke-width:6px;stroke-linecap:round;fill:none;vector-effect:none}
+    .k-h3-val{flex:none;width:36px;text-align:right;font-size:12px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .k-h3-val i{font-style:normal;font-size:10px;margin-left:1px;opacity:.85}
+    .k-h3-row.k-h3-skel .k-h3-name,.k-h3-skel-name{height:8px;background:var(--k-progress-bg);border-radius:3px}
+    .k-h3-skel-val{display:inline-block;width:26px;height:8px;background:var(--k-progress-bg);border-radius:3px}
+
+
+
+
+    :root{--k3-ok:#b6d6c9;--k3-bad:#d8617d}
+    [data-appearance=dark]{--k3-ok:#90cdb6;--k3-bad:#e2687f}
+    @media (max-width:430px), (orientation:landscape) and (max-height:500px){
+      .k-health.k-h3{column-gap:10px}
+      .k-h3-head{font-size:11px;margin-bottom:5px}
+      .k-h3-row{height:20px;gap:3px}
+      .k-h3-name{width:22px;font-size:10px}
+      .k-h3-chart,.k-h3-svg{height:9px}
+      .k-h3-val{width:38px;font-size:11px}
+    }
+  </style>
+    <style id="komari-quota-smaller">.k-quota-track[data-v-674db808]{height:5px}.k-quota-label strong{display:none}</style>
+<style id="komari-period-traffic">.k-tf{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07);padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07)}.k-tf-head{display:none}.k-tf-title{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--k-text-2)}.k-tf-sum{display:none}.k-tf-sum em{font-style:normal;font-size:9px;color:var(--k-text-3)}.k-tf-sum b{font-size:12px;font-weight:700;color:var(--k-text)}.k-tf-cols{display:grid;grid-template-columns:1fr 1fr}.k-tf-col{padding:0 12px;min-width:0}.k-tf-col:first-child{border-right:1px dashed rgba(255,255,255,.13);padding-left:0}.k-tf-col:last-child{padding-right:0}.k-tf-rate{display:flex;justify-content:space-between;align-items:baseline;line-height:16px}.k-tf-lbl{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;color:var(--k-text-3)}.k-tf-lbl i{display:inline-block;width:10px;text-align:center;flex:none}.k-tf-rate .k-tf-lbl i{position:relative;left:-2px}.k-tf-rate b{font-size:10px;font-weight:400;font-variant-numeric:tabular-nums}.k-tf-rate.up b{color:var(--k-up)}.k-tf-rate.down b{color:var(--k-down)}.k-tf-mid{display:flex;align-items:center;gap:6px;margin:3px 0}.k-tf-art{flex:1;height:24px;min-width:0}.k-tf-real{font-size:10px;font-weight:400;color:var(--k-text-3);white-space:nowrap}.k-tf-tot{display:flex;justify-content:space-between;align-items:baseline;line-height:16px;border-top:1px solid rgba(255,255,255,.07);margin-top:4px;padding-top:5px}.k-tf-tot b{font-size:10px;font-weight:400}.k-tf-tot .k-tf-lbl,.k-tf-rate .k-tf-lbl{color:var(--k-text-2)}.k-tf-col:first-child .k-tf-tot b{color:var(--k-text-3)}.k-tf-col:last-child .k-tf-tot b{color:var(--k-text-3)}.k-tf-conn{display:none}.k-tf-connv{font-size:10px;color:var(--k-text-3)}.k-tf-connv b{font-size:11px;font-weight:700;color:var(--k-text)}</style>
+<style id="komari-health-tone">.k-tf-tot{margin-top:8px!important;padding-top:8px!important}.k-tf{padding-bottom:7px!important}.k-tf{margin-top:0!important;padding-top:12px!important}.instance-progress-track{height:2px!important;border-radius:1px!important}.instance-progress-fill{height:2px!important;border-radius:1px!important}.k-quota-track{display:none!important}.k-tf{border-bottom:1px solid rgba(255,255,255,.07)!important}.k-quota{margin-top:-12px!important;border-bottom:1px solid rgba(255,255,255,.07)!important;padding-top:8px!important;padding-bottom:3px!important}.k-h3-row{height:20px}.k-h3-head{margin-bottom:4px}@media (max-width:430px),(orientation:landscape) and (max-height:500px){.k-h3-row{height:18px}}.k-h3-svg path{opacity:1}@supports (-webkit-touch-callout:none){.k-h3-row .k-h3-name,.k-h3-row .k-h3-val{position:relative;top:1px}}</style>
+</head>
+  <body>
+    <div id="app"></div>
+  <script defer src="/komarihome/visitor-v10.js"></script>
+  </body>
+</html>
