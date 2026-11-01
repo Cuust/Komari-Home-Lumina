@@ -44,6 +44,14 @@
 - **排序** — 默认 / 名称 / 实时网速 / 累计流量 / 价格，升降序
 - **资产概览** — 按实时汇率折算剩余预付价值与月均成本
 
+### 掉线显示与外观（v42）
+
+- **不再整页误判离线** — WebSocket 抖动时连接指示灯变红，但卡片保持上一次有效状态，不再 13 张同时变暗 1–2 秒
+- **离线判定 10 秒** — 服务端 30 秒无上报才判离线，叠加 10 秒保持后，机器关机约 40–53 秒才变暗；真离线仍会变暗，恢复后立即回亮
+- **变亮即时** — 变暗方向保留 1 秒延迟（吞掉抖动），变亮方向 0.3 秒淡入，指示灯变绿与页面变亮同步
+- **快照清洗** — `snap-fix.js` 在启动前删除本地快照中的历史离线值，避免首屏回放
+- **深浅色分隔线** — 全部分隔线使用 `var(--k-border-subtle)`，浅色主题下不再隐形；CPU 指标上方新增一条分隔线（上 9px / 下 10px）
+
 ### 实例详情页
 
 - **信息面板** — 系统 / 资源 / 网络三组信息，流量配额进度条，上/下一台切换
@@ -102,12 +110,13 @@ zip -r komarihomeplus.zip dist komari-theme.json preview.png
 ├── dist/
 │   ├── index.html                              # 入口
 │   ├── assets/
-│   │   ├── index-DVhWVUeY-3isp-v36.js          # 主 bundle
+│   │   ├── index-DVhWVUeY-3isp-v42.js          # 主 bundle
 │   │   ├── index-D_ZS1HD8-p6.css               # 样式
 │   │   ├── bootstrap-icons-BeopsB42.woff       # 图标字体
 │   │   └── bootstrap-icons-mSm7cUeB.woff2
 │   └── komarihome/
 │       ├── visitor-v10.js                      # 访客徽标脚本
+│       ├── snap-fix.js                         # 启动前清洗本地状态快照
 │       └── favicon.ico
 ├── komari-theme.json                           # 主题清单
 └── preview.png                                 # 预览图
