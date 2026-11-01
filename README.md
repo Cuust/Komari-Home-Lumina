@@ -63,18 +63,32 @@
 
 > 需要 Komari >= 1.3.0
 
-**方式一 — 直接上传 dist**
+**方式一 — 用现成主题包（推荐）**
+
+仓库 `packages/` 下已打包好可直接上传的 zip：
+
+```
+packages/komarihomeplus-theme-1.2.1-20261101.zip
+packages/komarihomeplus-theme-1.2.1-20261101.zip.sha256
+```
+
+校验后进入 Komari 后台 → **主题管理** → 上传主题包 → 启用。
+
+```bash
+sha256sum -c komarihomeplus-theme-1.2.1-20261101.zip.sha256
+```
+
+**方式二 — 自己从 dist 打包**
 
 ```bash
 git clone https://github.com/Cuust/Komari-Home-Lumina.git
 cd Komari-Home-Lumina
-# 把 dist/ 打成 zip
 zip -r komarihomeplus.zip dist komari-theme.json preview.png
 ```
 
-进入 Komari 后台 → **主题管理** → 上传主题包 → 启用。
+包内结构为 `komari-theme.json` + `preview.png` + `dist/`。
 
-**方式二 — 手动放置**
+**方式三 — 手动放置**
 
 把本仓库内容（`dist/`、`komari-theme.json`、`preview.png`）整体复制到：
 
@@ -118,6 +132,8 @@ zip -r komarihomeplus.zip dist komari-theme.json preview.png
 │       ├── visitor-v10.js                      # 访客徽标脚本
 │       ├── snap-fix.js                         # 启动前清洗本地状态快照
 │       └── favicon.ico
+├── packages/
+│   └── komarihomeplus-theme-1.2.1-20261101.zip # 可直接上传的主题包
 ├── komari-theme.json                           # 主题清单
 └── preview.png                                 # 预览图
 ```
